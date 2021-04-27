@@ -9,6 +9,7 @@
 </head>
 <body>
 <input type="text" id="goc">
+<input type="text" id="luc">
 <button onclick="gun()">Bắn</button>
 <img style="display: none" src="../background/Dan.png" height="28" width="500"/>
 <img style="display: none" src="../background/image (7).png" height="104" width="329"/>
@@ -17,15 +18,15 @@
 <img style="display: none" src="../background/nv2_run.jpg" height="104" width="329"/>
 <canvas id="canvas" width="900" height="450" style="border: 1px solid #000000;position: relative "></canvas>
 <script>
-    function Bullet(x) {
+    function Bullet(goc, luc) {
         const velocity = 10;
         this.x = 40;
         this.y = 300;
-        this.dx = Math.cos(Math.PI * x / 180) * velocity;//Lực
-        this.dy = Math.sin(Math.PI * (180+x) / 180) * velocity;//Góc
+        this.dx = Math.cos(Math.PI * goc / 180) * velocity;//Lực
+        this.dy = Math.sin(Math.PI * (180+goc) / 180) * velocity;//Góc
         this.color = "black";
         this.radius = 2;
-        this.gravity = 0.3;
+        this.gravity = luc;
         this.draw = function () {
             c.beginPath();
             c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
@@ -48,8 +49,8 @@
 
     function gun() {
         let goc = +document.getElementById('goc').value;
-
-        let b = new Bullet(goc);
+        let luc = +document.getElementById('luc').value;
+        let b = new Bullet(goc, 10/luc);
         b.draw();
 
         function f() {
