@@ -8,7 +8,7 @@
     <script src="../JS/weapon.js"></script>
 </head>
 <body>
-<input type="text" id="goc">
+<input type="number" value="45" id="goc">
 <input type="text" id="luc">
 <button onclick="gun()">Bắn</button>
 <img style="display: none" src="../background/Dan.png" height="28" width="500"/>
@@ -16,12 +16,12 @@
 <img style="display: none" src="../background/image666.png" height="120" width="448"/>
 <img style="display: none" src="../background/nv1_run.jpg" height="120" width="448"/>
 <img style="display: none" src="../background/nv2_run.jpg" height="104" width="329"/>
-<canvas id="canvas" width="900" height="450" style="border: 1px solid #000000;position: relative "></canvas>
+<canvas id="canvas" width="900" height="400" style="border: 1px solid #000000;position: relative "></canvas>
 <script>
     function Bullet(goc, luc) {
         const velocity = 10;
-        this.x = 40;
-        this.y = 300;
+        this.x = 0;
+        this.y = 400;
         this.dx = Math.cos(Math.PI * goc / 180) * velocity;//Lực
         this.dy = Math.sin(Math.PI * (180+goc) / 180) * velocity;//Góc
         this.color = "black";
