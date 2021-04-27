@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ban Sung</title>
+    <script src="../JS/charecter1.js"></script>
+    <script src="../JS/motivation.js"></script>
+    <script src="../JS/weapon.js"></script>
+</head>
+<body>
+<input type="text" id="goc">
+<button onclick="gun()">Bắn</button>
+<img style="display: none" src="../background/Dan.png" height="28" width="500"/>
+<img style="display: none" src="../background/image (7).png" height="104" width="329"/>
+<img style="display: none" src="../background/image666.png" height="120" width="448"/>
+<img style="display: none" src="../background/nv1_run.jpg" height="120" width="448"/>
+<img style="display: none" src="../background/nv2_run.jpg" height="104" width="329"/>
+<canvas id="canvas" width="900" height="450" style="border: 1px solid #000000;position: relative "></canvas>
+<script>
+    function Bullet(x) {
+        const velocity = 10;
+        this.x = 40;
+        this.y = 300;
+        this.dx = Math.cos(Math.PI * x / 180) * velocity;//Lực
+        this.dy = Math.sin(Math.PI * (180+x) / 180) * velocity;//Góc
+        this.color = "black";
+        this.radius = 2;
+        this.gravity = 0.3;
+        this.draw = function () {
+            c.beginPath();
+            c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+            console.log('x,y: ' + this.x + ',' + this.y);
+            c.fillStyle = this.color;
+            c.fill();
+            c.closePath();
+        }
+        this.update = function () {
+
+            this.x += this.dx;
+            this.y += this.dy;
+            this.dy += this.gravity;
+            this.draw();
+        }
+    }
+
+    let canvas = document.getElementById('canvas');
+    let c = canvas.getContext('2d');
+
+    function gun() {
+        let goc = +document.getElementById('goc').value;
+
+        let b = new Bullet(goc);
+        b.draw();
+
+        function f() {
+            b.update();
+            setTimeout(f, 10)
+        }
+
+        f();
+    }
+
+    // let play1 = new Character(canvas, '../background/nv1_run.jpg', 50, 400);
+    // let play2 = new Character(canvas, '../background/image (7).png', 800, 400);
+    // let weapon = new Weapon(canvas, '../background/Dan.png', play1.x, play1.y);
+    //
+    // function main() {
+    //     pen.clearRect(0, 0, canvas.width, canvas.height);
+    //     weapon.moveWeapon();
+    //     weapon.drawImg();
+    //     play1.drawImg();
+    //     play2.drawImg();
+    // }
+    //
+    // setInterval(main, 100)
+    // window.addEventListener('keydown', moveCharecter);
+</script>
+
+</body>
+</html>
+
+
+
