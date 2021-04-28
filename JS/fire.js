@@ -22,21 +22,33 @@ function Bullet(goc, luc, play) {
     }
 }
 
-
+let turn = 0;
 
 function gun() {
-
+    turn++;
     let goc = +document.getElementById('goc').value;
     let luc = +document.getElementById('luc').value;
-
+    if (turn % 2) {
         let b = new Bullet(goc, luc, play1);
         b.draw();
-        function f() {
-            b.update();
-            setTimeout(f, 10)
-        }
-        f();
 
+        function f1() {
+            b.update();
+            setTimeout(f1, 10)
+        }
+
+        f1();
+    } else {
+        let c = new Bullet(180 - goc, luc, play2);
+        c.draw();
+
+        function f2() {
+            c.update();
+            setTimeout(f2, 10);
+        }
+
+        f2();
+    }
 
 }
 
