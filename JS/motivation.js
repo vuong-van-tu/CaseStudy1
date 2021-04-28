@@ -1,7 +1,6 @@
-class Motivation{
-    constructor(canvas, imageName, row, col, x, y) {
-        this.canvas = canvas;
-        this.pen = canvas.getContext('2d');
+class Motivation {
+    constructor(pen, imageName, row, col, x, y) {
+        this.pen = pen;
         this.image = new Image();
         this.image.src = imageName;
         this.x = x;
@@ -24,7 +23,6 @@ class Motivation{
         this.x=x;
         this.y=y
     }
-
 }
 
 
