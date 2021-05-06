@@ -14,6 +14,8 @@ class Character {
             let luc = +document.getElementById('luc1').value;
             let b = new Bullet(goc, luc, this.x, this.y);
             this.weapon.push(b);
+
+
         }
         this.fire2 = function (player) {
             let goc = +document.getElementById('goc2').value;
@@ -29,8 +31,19 @@ class Character {
     }
 
     displayBlood() {
-        pen.fillStyle = 'red';
-        pen.fillRect(this.x + 3, this.y - 10, this.blood, 6);
+        this.pen.beginPath();
+        this.pen.stroke.style='black';
+        this.pen.rect(this.x + 3, this.y - 10, this.blood, 6);
+        this.pen.fillStyle = 'red';
+        this.pen.fill();
+        this.pen.stroke();
+
+        // this.pen.beginPath();
+        // this.pen.strokeStyle = 'black';
+        // this.pen.rect(this.x + 40, this.y + 20,this.blood , 5);
+        // this.pen.fillStyle = 'red';
+        // this.pen.fill();
+        // this.pen.stroke();
     }
 
     checkBlood() {

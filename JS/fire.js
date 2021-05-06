@@ -1,18 +1,21 @@
-function Bullet(goc, luc,x,y) {
+function Bullet(goc, luc,x,y,name) {
     const velocity = 10;
     this.x = x + 40;
     this.y = y + 10;
+    this.name = name;
     this.dx = Math.cos(Math.PI * goc / 180) * velocity;//Lực
     this.dy = Math.sin(Math.PI * (180 + goc) / 180) * velocity;//Góc
-    this.color = "black";
-    this.radius = 10;
+    // this.color = "black";
+    // this.radius = 10;
     this.gravity = 10 / luc;
     this.draw = function () {
-        pen.beginPath();
-        pen.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        pen.fillStyle = this.color;
-        pen.fill();
-        pen.closePath();
+        // pen.beginPath();
+        // pen.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        // pen.fillStyle = this.color;
+        // pen.fill();
+        // pen.closePath();
+        let img = document.getElementById('bullet');
+        pen.drawImage(img);
     }
     this.update = function () {
         this.x += this.dx;

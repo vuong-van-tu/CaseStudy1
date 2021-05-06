@@ -27,12 +27,14 @@
 <input type="number" id="luc2" style="width: 50px;height: 50px;position: relative; border: none">
 
 
+<img style="display: none" src="../background/boom.png" height="244" width="330"/>
 <img style="display: none" src="../background/map1.png" height="464" width="1492"/>
 <img id="dan" style="display: none" src="../background/Dan.png" height="28" width="500"/>
 <img id="2r" style="display: none" src="../background/nv2_right.png" height="104" width="329"/>
 <img id="1l" style="display: none" src="../background/nv1_left.png" height="120" width="448"/>
 <img id="1r" style="display: none" src="../background/nv1_right.png" height="120" width="448"/>
 <img id="2l" style="display: none" src="../background/nv2_left.png" height="104" width="329"/>
+<img id="bullet" style="display: none" src="../background/boom.png" height="244" width="330"/>
 <center>
 <canvas id="canvas" width="900" height="400" style="border: 1px solid #000000;position: relative "></canvas>
 </center>
@@ -41,11 +43,13 @@
     let canvas = document.getElementById('canvas');
     let pen = canvas.getContext('2d');
     let play1 = new Character(pen, '../background/nv1_right.png', 50, 300);
-    let play2 = new Character(pen, '../background/nv2_left.png', 800, 300)
+    let play2 = new Character(pen, '../background/nv2_left.png', 800, 300);
+    let bom = new Bullet(pen,'../background/boom.png',20,20);
     window.addEventListener('keydown', moveCharecter);
 
     function moveBullet(player) {
         for (let i = 0; i < player.weapon.length; i++) {
+
             player.weapon[i].update();
             player.weapon[i].draw();
         }
@@ -55,15 +59,16 @@
         pen.clearRect(0, 0, canvas.width, canvas.height);
         play1.drawImg();
         play2.drawImg();
+        // bom.drawImg();
         play1.displayBlood();
         play2.displayBlood();
         moveBullet(play1);
         moveBullet(play2);
-        checkPlayer2Blood();
-
+        // checkPlayer2Alive();
     }
 
-    setInterval(main, 50);
+    setInterval(main, 10);
+
 
 </script>
 
